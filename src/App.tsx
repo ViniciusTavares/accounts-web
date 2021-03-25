@@ -3,31 +3,26 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import "./styles.css"
 
 import { Dispatch } from "redux"
+import { ListAccount } from "./components/accounts/listAccount"
+import { fetchAccounts } from './store/accounts/accountCreators'
 
 const App: React.FC = () => {
-  const articles: readonly IArticle[] = useSelector(
-    (state: ArticleState) => state.articles,
+  const accounts: AccountEntity[] = useSelector(
+    (state: AccountState) => state.accounts,
     shallowEqual
   )
 
   const dispatch: Dispatch<any> = useDispatch()
 
-  const saveArticle = React.useCallback(
-    (article: IArticle) => dispatch(addArticle(article)),
+  const searchAccounts: any = React.useCallback(
+    (account: AccountFormProps) => dispatch(fetchAccounts(account)),
     [dispatch]
-  )
+  ) 
 
   return (
     <main>
-      <h1>My Articles</h1>
-      <AddArticle saveArticle={saveArticle} />
-      {articles.map((article: IArticle) => (
-        <Article
-          key={article.id}
-          article={article}
-          removeArticle={removeArticle}
-        />
-      ))}
+      <h1>My Accounts</h1>
+      <ListAccount searchAccounts={searchAccounts} accounts={accounts} />      
     </main>
   )
 }

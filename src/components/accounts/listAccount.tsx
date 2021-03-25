@@ -1,15 +1,16 @@
 import * as React from "react"
 
 type Props = {
-  fetchAccounts: (article: AccountFormProps | any) => void
+  accounts: AccountEntity[],
+  searchAccounts: (account: AccountFormProps | any) => void,
 }
 
-export const FetchAccounts: React.FC<Props> = ({ fetchAccounts }) => {
-  const [accountProps] = React.useState<AccountFormProps>()
+export const ListAccount: React.FC<Props> = ({ searchAccounts }) => {
+  const [accountFormProps] = React.useState<AccountFormProps>()
 
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault()
-    fetchAccounts(accountProps)
+    searchAccounts(accountFormProps)
   }
 
   return (
