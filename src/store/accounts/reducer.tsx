@@ -1,6 +1,6 @@
 import * as actionTypes from "./accountTypes"
 
-const initialState: AccountState = {}
+const initialState: AccountState = { accounts: [] }
 
 const reducer = (
     state: AccountState = initialState,
@@ -8,10 +8,9 @@ const reducer = (
   ): AccountState => {
     switch (action.type) {      
       case actionTypes.FETCH_ACCOUNT:
-        state.accounts.concat(action.accounts)
         return {
           ...state,
-          accounts: updatedArticles,
+          accounts: state.accounts.concat(action.accounts),
         }
     }
     return state

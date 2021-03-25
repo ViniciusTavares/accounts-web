@@ -3,7 +3,20 @@ import AccountApi from '../accounts/api'
 
 const accountApi = new AccountApi();
 
-export const fetchAccounts = async (filter: Filter, sort: Sort, page: number) => { 
+export const fetchAccounts = async (accountProps: AccountFormProps) => {
+  const filter =  { 
+    firstName: accountProps?.firstName,
+    lastName: accountProps?.lastName,
+    mfa: accountProps?.mfa,
+    country: accountProps?.country
+  } as Filter
+
+  const sort = { 
+    createdDate: accountProps.createdDate 
+  } as Sort
+
+  const page = 1;
+
   const accounts = await accountApi.fetchAccounts(filter, sort, page);
 
   const action: AccountAction = { 
@@ -15,11 +28,3 @@ export const fetchAccounts = async (filter: Filter, sort: Sort, page: number) =>
       dispatch(action)
   }
 }
-
-// export function removeArticle(article: IArticle) {
-//   const action: ArticleAction = {
-//     type: actionTypes.REMOVE_ARTICLE,
-//     article,
-//   }
-//   return simulateHttpRequest(action)
-// }

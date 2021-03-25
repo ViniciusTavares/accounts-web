@@ -1,14 +1,15 @@
-interface ListAccount { 
+interface AccountFormProps { 
 	id: number, 
-	firstName,
-	lastName,
-	mfa,
-	createdDate
+	firstName: string,
+	lastName: string,
+	mfa: string,
+	country: string,
+	createdDate: number
 }
 
 interface IApi
 {
-	fetchAccounts(filter: Filter, sort: Sort, page: number): Promise < Account[] >
+	fetchAccounts(filter: Filter, sort: Sort, page: number): Promise <AccountEntity[] >
 }
 
 type AccountState = {

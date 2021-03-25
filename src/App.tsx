@@ -2,9 +2,6 @@ import * as React from "react"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import "./styles.css"
 
-import { Article } from "./components/accounts/Article"
-import { AddArticle } from "./components/accounts/AddArticle"
-import { fetchAccounts } from "./store/accounts/accountCreators"
 import { Dispatch } from "redux"
 
 const App: React.FC = () => {
