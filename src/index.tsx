@@ -5,7 +5,7 @@ import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 
 import App from "./App"
-import reducer from "./store/accounts/reducer"
+import reducer from "./store/account/reducer"
 
 const store: Store<AccountState, AccountAction> & {
   dispatch: DispatchType

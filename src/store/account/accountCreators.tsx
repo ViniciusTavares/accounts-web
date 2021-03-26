@@ -1,5 +1,5 @@
 import * as actionTypes from "./accountTypes"
-import AccountApi from '../accounts/api'
+import AccountApi from './api'
 
 const accountApi = new AccountApi();
 

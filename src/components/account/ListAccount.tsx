@@ -1,7 +1,9 @@
 import React, { useEffect, } from 'react'
 import { useSelector } from 'react-redux'
 
-let sort = 1;
+import './ListAccount.css';
+
+// let sort = 1;
 
 type Props = {
   accounts: AccountEntity[],
@@ -16,10 +18,12 @@ export const ListAccount: React.FC<Props> = ({ searchAccounts }) => {
   const [formProps, setFormProps] = React.useState<AccountEntity | {}>()
 
   const handleFormData = (e: React.FormEvent<HTMLInputElement>) => {
-    setFormProps({
-      ...formProps,
-      [e.currentTarget.id]: e.currentTarget.value,
-    })}
+    const updatedProps = e.currentTarget.value 
+    ? { ...formProps, [e.currentTarget.id]: e.currentTarget.value }
+    : formProps
+
+    setFormProps(updatedProps)
+  }
 
 //  const handleSort = (e: React.FormEvent<HTMLInputElement>) => {
 //    sort = sort * -1;
@@ -41,12 +45,14 @@ export const ListAccount: React.FC<Props> = ({ searchAccounts }) => {
   return (
     <form  onSubmit={submitForm} className="Fetch-article">
       <input
+        className="input"
         type="text"
         id="firstName"
         placeholder="First Name"
         onChange={handleFormData}
       />
       <input
+        className="input"
         type="text"
         id="lastName"
         placeholder="Last Name"
@@ -54,6 +60,7 @@ export const ListAccount: React.FC<Props> = ({ searchAccounts }) => {
       />
 
       <input
+        className="input"
         type="text"
         id="mfa"
         placeholder="MFA"
@@ -61,37 +68,42 @@ export const ListAccount: React.FC<Props> = ({ searchAccounts }) => {
       />
 
       <input
+        className="input"
         type="text"
         id="country"
         placeholder="Country"
         onChange={handleFormData}
       />
 
-      <button>
-        Fetch accounts
+      <button className="button">
+        Search
       </button>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>MFA</th>
-          <th>Country</th>
-          <th>Email</th>
-          <th>AMT</th>
-          <th>DOB</th>
-          <th>Created Date</th>
-          <th>Referred By</th>
-        </tr>
-        {accounts.map(account => 
-          <tr>          
-            <td>{account.firstName} {account.lastName}</td>
-            <td>{account.mfa}</td>
-            <td>{account.country}</td>
-            <td>{account.email}</td>
-            <td>{account.amt }</td>
-            <td>{new Date(account.dob).toLocaleString('en-ca', { dateStyle:'short' })}</td>
-            <td>{new Date(account.createdDate).toLocaleString('en-ca', { dateStyle:'short' })}</td>
-            <td>{account.referredBy}</td>
+      <table className="styled-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>MFA</th>
+            <th>Country</th>
+            <th>Email</th>
+            <th>AMT</th>
+            <th>DOB</th>
+            <th>Created Date</th>
+            <th>Referred By</th>
           </tr>
+        </thead>
+        {accounts.map(account => 
+          <tbody>
+            <tr>          
+              <td>{account.firstName} {account.lastName}</td>
+              <td>{account.mfa}</td>
+              <td>{account.country}</td>
+              <td>{account.email}</td>
+              <td>{account.amt }</td>
+              <td>{new Date(account.dob).toLocaleString('en-ca', { dateStyle:'short' })}</td>
+              <td>{new Date(account.createdDate).toLocaleString('en-ca', { dateStyle:'short' })}</td>
+              <td>{account.referredBy}</td>
+            </tr>
+          </tbody>
         )}
        </table>      
     </form>

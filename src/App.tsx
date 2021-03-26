@@ -2,8 +2,10 @@ import * as React from "react"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 
 import { Dispatch } from "redux"
-import { ListAccount } from "./components/accounts/listAccount"
-import { fetchAccounts } from './store/accounts/accountCreators'
+import { ListAccount } from "./components/account/ListAccount"
+import { fetchAccounts } from './store/account/accountCreators'
+
+import './index.css'
 
 const App: React.FC = () => {
   const accounts: AccountEntity[] = useSelector(
