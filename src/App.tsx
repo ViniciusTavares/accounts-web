@@ -1,6 +1,5 @@
 import * as React from "react"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
-import "./styles.css"
 
 import { Dispatch } from "redux"
 import { ListAccount } from "./components/accounts/listAccount"

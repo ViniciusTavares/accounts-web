@@ -9,7 +9,7 @@ interface AccountFormProps {
 
 interface IApi
 {
-	fetchAccounts(filter: Filter, sort: Sort, page: number): Promise <AccountEntity[] >
+	fetchAccounts(filter: Filter, sort: Sort, page: number): Promise<AccountEntity[]>
 }
 
 type AccountState = {
@@ -35,13 +35,14 @@ type Sort = {
 type DispatchType = (args: AccountAction) => AccountAction
 
 type AccountEntity = {
+	_id: string,
 	firstName: string;
 	lastName: string,
 	country: string;
 	email: string;
-	dob ? : Date;
-	mfa ? : string;
-	amt ? : string,
-	createdDate ? : Date;
-	referredBy ? : String
+	dob : string;
+	mfa? : string;
+	amt? : string,
+	createdDate : string;
+	referredBy? : string
 };
