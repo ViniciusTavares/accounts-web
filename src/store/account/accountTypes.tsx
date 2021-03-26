@@ -1,1 +1,2 @@
-export const FETCH_ACCOUNT = "FETCH_ACCOUNT"
+export const FETCH_ACCOUNTS = "FETCH_ACCOUNTS"
+export const SORT_ACCOUNTS = "SORT_ACCOUNTS"

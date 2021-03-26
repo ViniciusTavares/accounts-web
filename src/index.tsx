@@ -4,12 +4,14 @@ import { createStore, applyMiddleware, Store } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 
-import App from "./App"
-import reducer from "./store/account/reducer"
+import App from "./containers/App"
+import accountReducer from "./store/account/reducer"
+
+import './index.css'
 
 const store: Store<AccountState, AccountAction> & {
   dispatch: DispatchType
-} = createStore(reducer, applyMiddleware(thunk))
+} = createStore(accountReducer, applyMiddleware(thunk))
 
 const rootElement = document.getElementById("root")
 render(

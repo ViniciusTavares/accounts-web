@@ -7,7 +7,7 @@ const reducer = (
     action: AccountAction
   ): AccountState => {
     switch (action.type) {      
-      case actionTypes.FETCH_ACCOUNT:
+      case actionTypes.FETCH_ACCOUNTS:
         const mergedAccounts = action.accounts.filter(e =>{      
           return !(state.accounts.includes(e));    
         });
@@ -16,6 +16,12 @@ const reducer = (
           ...state,
           accounts: mergedAccounts,
         }
+      case actionTypes.SORT_ACCOUNTS:
+        return { 
+          ...state,
+          accounts: action.accounts
+        }
+      
     }
     return state
   }
