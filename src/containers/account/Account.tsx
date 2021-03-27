@@ -19,10 +19,13 @@ export const Account: React.FC<Props> = ({ searchAccounts, sortAccounts }) => {
   const [formProps, setFormProps] = React.useState<AccountEntity | {}>()
 
   const handleInputData = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    
     const updatedProps = 
     { ...formProps, [e.currentTarget.id]: e.currentTarget.value }
     
     setFormProps(updatedProps)
+    searchAccounts(updatedProps);
   }
 
  const handleSort = (e: React.FormEvent<HTMLAnchorElement>) => {
