@@ -50,11 +50,9 @@ export const sortAccounts = (isAsc: Boolean, accounts: AccountEntity[]) => {
       return 0;
     };
 
-    accounts.sort(compare);
-
     dispatch({
       type: actionTypes.SORT_ACCOUNTS,
-      accounts,
+      accounts: accounts.slice(0).sort(compare),
     });
   };
 };

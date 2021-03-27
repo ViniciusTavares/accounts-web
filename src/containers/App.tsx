@@ -18,6 +18,8 @@ const App: React.FC = () => {
     [dispatch]
   )
 
+  dispatch(fetchAccounts({}));
+
   return (
     <main>
       <h1>My Accounts</h1>

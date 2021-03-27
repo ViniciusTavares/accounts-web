@@ -39,10 +39,6 @@ export const Account: React.FC<Props> = ({ searchAccounts, sortAccounts }) => {
   sortAccounts(isAsc, accounts);
   }
 
-  useEffect(() => {
-      searchAccounts(formProps)
-  }, [formProps, accounts, searchAccounts])
-
   const onSearchAccounts = (e: React.FormEvent) => {
     e.preventDefault()
     searchAccounts(formProps)   

@@ -1,10 +1,10 @@
 interface AccountFormProps { 
-	id: number, 
-	firstName: string,
-	lastName: string,
-	mfa: string,
-	country: string,
-	createdDate: number
+	id?: number, 
+	firstName?: string,
+	lastName?: string,
+	mfa?: string,
+	country?: string,
+	createdDate?: number
 }
 
 interface IApi
@@ -42,7 +42,7 @@ type AccountEntity = {
 	email: string;
 	dob : string;
 	mfa? : string;
-	amt? : string,
+	amt : string,
 	createdDate : string;
 	referredBy? : string
 };
