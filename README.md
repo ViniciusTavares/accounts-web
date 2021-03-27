@@ -15,9 +15,9 @@ After seeting up [Accounts-Api](https://github.com/ViniciusTavares/accounts-api)
 cp .env-example .env.local
 ```
 
-Change the env var REACT_APP_SERVER_URL with the proper server url.
+Change the env var ```REACT_APP_SERVER_URL``` with the proper server url.
 
-For instance, if [Accounts-Api](https://github.com/ViniciusTavares/accounts-api) is running on port 3000, it would be:
+For instance, if [Accounts-Api](https://github.com/ViniciusTavares/accounts-api) is running on ```port 3000```, it would be:
 
 ```
 REACT_APP_SERVER_URL=http://localhost:3000
