@@ -8,7 +8,7 @@ type Props = {
   export const ListAccount: React.FC<Props> = ({ accounts, handleSort }) => {
     /* TODO: create sort button to solve warning */
     return (
-    <div>
+    <div className="grid">
        <table className="styled-table">
         <thead>
           <tr>
@@ -17,9 +17,9 @@ type Props = {
             <th>Country</th>
             <th>Email</th>
             <th>AMT</th>
+            <th>Referred By</th>
             <th>DOB</th>            
             <th><a href="#" className="sort-by" onClick={handleSort}>Created Date</a></th>
-            <th>Referred By</th>
           </tr>
         </thead>
         <tbody>
@@ -30,9 +30,9 @@ type Props = {
             <td>{account.country}</td>
             <td>{account.email}</td>
             <td>{account.amt }</td>
+            <td>{account.referredBy}</td>
             <td>{new Date(account.dob).toLocaleString('en-ca', { dateStyle:'short' })}</td>
             <td>{new Date(account.createdDate).toLocaleString('en-ca', { dateStyle:'short' })}</td>
-            <td>{account.referredBy}</td>
           </tr>
           )}
         </tbody>

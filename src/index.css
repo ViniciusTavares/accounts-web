@@ -7,6 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.40em;
+  margin-block-end: 0.50em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -17,6 +27,31 @@ a {
   text-decoration: none;
 }
 
+label {
+  display: flex;
+  flex-direction: column-reverse;
+}
+label>span {
+  transition: all .2s;
+  transform-origin: top left;
+  margin-bottom: 8px;
+}
+label>input[placeholder=" "]:not(:focus):placeholder-shown + span {
+  transform: translateY(1em) scale(1.25);
+  pointer-events: none;
+  opacity: .5
+}
+
+.grid-wrap {
+  padding: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 2rem;
+}
+
 .input {
   font-size: 16px;
   font-size: max(16px, 1em);
@@ -25,7 +60,6 @@ a {
   background-color: #fff;
   border: 2px solid;
   border-radius: 4px;
-  margin: 2px;
 }
 
 .button { 

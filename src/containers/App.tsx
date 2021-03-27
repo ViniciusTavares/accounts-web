@@ -21,8 +21,8 @@ const App: React.FC = () => {
   dispatch(fetchAccounts({}));
 
   return (
-    <main>
-      <h1>My Accounts</h1>
+    <main className="grid-wrap">
+      <h1>Accounts</h1>
       <Account 
         searchAccounts={search} 
         sortAccounts={sort}

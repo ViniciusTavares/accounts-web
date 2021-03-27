@@ -5,37 +5,46 @@ type Props = {
   
 export const AccountFilter: React.FC<Props> = ({ handleInputData }) => {
     return (
-    <div>
+    <div className="grid">
+        <label>
         <input
             className="input"
             type="text"
             id="firstName"
-            placeholder="First Name"
             onChange={handleInputData}
         />
+        <span>First Name</span>
+        </label>
+        <label>
         <input
             className="input"
             type="text"
             id="lastName"
-            placeholder="Last Name"
             onChange={handleInputData}
         />
+         <span>Last Name</span>
+        </label>
 
+        <label>
         <input
             className="input"
             type="text"
             id="mfa"
-            placeholder="MFA"
             onChange={handleInputData}
         />
 
+         <span>MFA</span>
+        </label>
+
+        <label>
         <input
             className="input"
             type="text"
             id="country"
-            placeholder="Country"
             onChange={handleInputData}
         />
+        <span>Country</span>
+        </label>
     </div>
     )
 }
