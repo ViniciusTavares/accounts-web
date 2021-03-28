@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 
 import { Dispatch } from "redux"
 import { Account } from "./account/Account"
-import { fetchAccounts, sortAccounts } from '../store/account/accountCreators'
+import { fetchAccounts, sortAccounts, downloadCSV } from '../store/account/accountCreators'
 
 const App: React.FC = () => {
   const dispatch: Dispatch<any> = useDispatch()
@@ -18,6 +18,11 @@ const App: React.FC = () => {
     [dispatch]
   )
 
+  const csv: any = React.useCallback(
+    (accounts: AccountFormProps) => dispatch(downloadCSV(accounts)),
+    [dispatch]
+  )
+
   dispatch(fetchAccounts({}));
 
   return (
@@ -26,6 +31,7 @@ const App: React.FC = () => {
       <Account 
         searchAccounts={search} 
         sortAccounts={sort}
+        downloadCSV={csv}
       />      
     </main>
   )

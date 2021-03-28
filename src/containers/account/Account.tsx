@@ -6,12 +6,13 @@ import { ListAccount } from '../../components/account/ListAccount'
 
 type Props = {
   searchAccounts: (account: AccountFormProps | any) => AccountEntity[],
+  downloadCSV: (account: AccountFormProps | any) => AccountEntity[],
   sortAccounts: (isAsc: Boolean | any, accounts: AccountEntity[]) => AccountEntity[],
 }
 
 let sort = 0;
 
-export const Account: React.FC<Props> = ({ searchAccounts, sortAccounts }) => {
+export const Account: React.FC<Props> = ({ searchAccounts, downloadCSV, sortAccounts }) => {
   const accounts: AccountEntity[] = useSelector(
     (state: AccountState) => state.accounts
   )
@@ -26,6 +27,13 @@ export const Account: React.FC<Props> = ({ searchAccounts, sortAccounts }) => {
     
     setFormProps(updatedProps)
     searchAccounts(updatedProps);
+  }
+
+  const handleCSV = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    
+    
+    downloadCSV(formProps)
   }
 
  const handleSort = (e: React.FormEvent<HTMLAnchorElement>) => {
@@ -49,8 +57,15 @@ export const Account: React.FC<Props> = ({ searchAccounts, sortAccounts }) => {
 
   return (
     <div>
-      <AccountFilter handleInputData={handleInputData} searchAccounts={onSearchAccounts}/>
-      <ListAccount accounts={accounts} handleSort={handleSort} />
+      <AccountFilter 
+        handleInputData={handleInputData} 
+        handleCSV={handleCSV} 
+        searchAccounts={onSearchAccounts} 
+      />
+      <ListAccount 
+        accounts={accounts} 
+        handleSort={handleSort} 
+      />
     </div>
   )
 }

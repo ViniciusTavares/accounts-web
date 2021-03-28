@@ -10,4 +10,11 @@ export default class Api implements IApi {
 
         return result?.data;
     }
+
+    async downloadCSV(filter: Filter, sort: Sort, page: number = 1 ) : Promise<any> {
+        const url = `${baseUrl}/accounts/csv?filter=${JSON.stringify(filter)}&sort=${JSON.stringify(sort)}&page=${page}`
+
+        return await axios.get(url,{  responseType: 'blob' });
+
+    }
 }

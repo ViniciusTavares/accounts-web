@@ -1,9 +1,10 @@
 type Props = {
     searchAccounts?: (e: React.FormEvent) => void,
-    handleInputData: (e: React.FormEvent<HTMLInputElement>) => void
+    handleInputData: (e: React.FormEvent<HTMLInputElement>) => void,
+    handleCSV: (e: React.FormEvent<HTMLButtonElement>) => void
 }
   
-export const AccountFilter: React.FC<Props> = ({ handleInputData }) => {
+export const AccountFilter: React.FC<Props> = ({ handleInputData, handleCSV }) => {
     return (
     <div className="grid">
         <label>
@@ -45,6 +46,10 @@ export const AccountFilter: React.FC<Props> = ({ handleInputData }) => {
         />
         <span>Country</span>
         </label>
+        <button 
+            className="button transparent-blue"
+            onClick={handleCSV}> <b>Download CSV</b>
+        </button>
     </div>
     )
 }

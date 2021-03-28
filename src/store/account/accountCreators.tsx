@@ -1,11 +1,11 @@
 import * as actionTypes from "./accountTypes";
 import AccountApi from "./api";
+import { saveFile } from '../../helpers/file-manager'
 
 const accountApi = new AccountApi();
 
-export const fetchAccounts = (accountProps: AccountFormProps) => {
-  return async function (dispatch: DispatchType) {
-    const filter = {} as Filter;
+const sanitizeSearch = (accountProps: AccountFormProps) => {
+  const filter = {} as Filter;
 
     if (accountProps?.firstName) {
       filter.firstName = accountProps.firstName;
@@ -29,12 +29,29 @@ export const fetchAccounts = (accountProps: AccountFormProps) => {
 
     const page = 1;
 
+    return { filter, sort, page }
+}
+
+export const fetchAccounts = (accountProps: AccountFormProps) => {
+  return async function (dispatch: DispatchType) {
+    const { filter, sort, page } = sanitizeSearch(accountProps);
+
     const accounts = await accountApi.fetchAccounts(filter, sort, page);
 
     dispatch({
       type: actionTypes.FETCH_ACCOUNTS,
       accounts,
     });
+  };
+};
+
+export const downloadCSV = (accountProps: AccountFormProps) => {
+  return async function (dispatch: DispatchType) {
+    const { filter, sort, page } = sanitizeSearch(accountProps)
+
+    const result = await accountApi.downloadCSV(filter, sort, page);
+
+    await saveFile(result.data, `accounts_${new Date().toLocaleDateString()}.csv`);
   };
 };
 
