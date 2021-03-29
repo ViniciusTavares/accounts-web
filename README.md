@@ -9,8 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Running 
 
-After seeting up [Accounts-Api](https://github.com/ViniciusTavares/accounts-api), copy the file `env-example` to `.env.local`
-
+After setting [Accounts-Api](https://github.com/ViniciusTavares/accounts-api) up, copy the file `env-example` to `.env.local`
 ```
 cp .env-example .env.local
 ```
